@@ -1,0 +1,31 @@
+<project default='compile' basedir='.'>
+
+  <target name='compile' depends='Knights'/>
+
+  <target name='Knights'>
+    <javac srcdir='./' includes='Knights.java'/>
+  </target>
+
+        <target name='doc' depends='compile'>
+                <javadoc
+                                destdir='docs/'
+                                author='yes'
+                                use='true'
+                                windowtitle='Knights tour' >
+                        <fileset dir='.' defaultexcludes='yes'>
+                                <include name='Knights.java'/>
+                        </fileset>
+                </javadoc>
+        </target>
+
+  <target name='clean'>
+    <delete>
+                        <fileset dir='./'>
+                                <include name='*.class'/>
+                        </fileset>
+                </delete>
+  </target>
+  <target name='run' depends='doc'>
+	<java classname='Knights'/>
+ </target>
+</project>
